@@ -145,7 +145,7 @@ function App() {
             viewport={{ once: true }}
           >
             <div className="about-image-wrapper">
-               <img src="/images/portrait.jpg" alt="Barkın ALAÇAM" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+               <img src={`${import.meta.env.BASE_URL}images/portrait.jpg`} alt="Barkın ALAÇAM" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
             </div>
             <div className="about-badge">
               <div className="years">25+</div>
