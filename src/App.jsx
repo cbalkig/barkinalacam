@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Scale, Shield, Landmark, BookOpen, MapPin, Phone, Mail, CheckCircle2, MessageCircle } from 'lucide-react';
+import { Menu, X, Scale, Shield, Landmark, BookOpen, MapPin, Phone, Mail, CheckCircle2, MessageCircle, Users, Handshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './App.css';
 
@@ -49,9 +49,14 @@ function App() {
       description: "Karmaşık mülkiyet işlemleri, imar hukuku ve davalar sürecinde kapsamlı rehberlik."
     },
     {
-      icon: <BookOpen size={32} />,
-      title: "Müzakere ve Uyuşmazlık Çözümü",
-      description: "Mahkeme salonlarında kararlı savunuculuk ve alternatif çözüm yolları ile uyuşmazlıkların müvekkil lehine sonuçlandırılması."
+      icon: <Users size={32} />,
+      title: "Aile ve Boşanma Hukuku",
+      description: "Boşanma, nafaka, velayet ve mal paylaşımı süreçlerinde hassasiyetle ve üstün hukuki tecrübeyle müvekkillerin haklarının korunması."
+    },
+    {
+      icon: <Handshake size={32} />,
+      title: "Arabuluculuk ve Uyuşmazlık Çözümü",
+      description: "Resmi arabuluculuk yetkisiyle, uyuşmazlıkların mahkemeye taşınmadan hızlı, gizli ve tarafların menfaatine en uygun şekilde çözümlenmesi."
     }
   ];
 
@@ -93,7 +98,7 @@ function App() {
               Haklarınızı <span>tavizsiz</span> bir mükemmellikle savunuyoruz.
             </motion.h1>
             <motion.p variants={fadeUpVariant}>
-              Karmaşık hukuki zorluklar için stratejik, yüksek standartlı savunma ve kişiselleştirilmiş danışmanlık sunmaya adanmış seçkin bir hukuk bürosu.
+              Karmaşık hukuki zorluklar için stratejik savunma, kişiselleştirilmiş hukuki danışmanlık ve uzman arabuluculuk hizmetleri sunan seçkin bir hukuk bürosu.
             </motion.p>
             <motion.div className="hero-btns" variants={fadeUpVariant}>
               <a href="#contact" className="btn btn-primary">BİZE ULAŞIN</a>
@@ -165,7 +170,7 @@ function App() {
               Marmara Üniversitesi mezunu olan Barkın ALAÇAM, 2000 yılından bu yana hukuk sektöründe kesintisiz ve başarılı bir kariyere sahiptir. KATILIM Hukuk Bürosu ve 16 yılı aşkın süreyle ÖZGÜL Hukuk Bürosu'nda edindiği derin tecrübelerin ardından, 2020 yılında kendi ofisi olan Alaçam Avukatlık ve Hukuk Danışmanlığı'nı kurmuştur.
             </p>
             <p>
-              Çeyrek asırlık mesleki birikimiyle; müzakere, alternatif ihtilaf çözümü ve dava takibi süreçlerinde müvekkillerine yüksek standartlarda hukuki destek sağlamaktadır.
+              Çeyrek asırlık mesleki birikimi ve resmi Arabulucu sıfatıyla; boşanma ve aile hukuku süreçlerinden, karmaşık ticari uyuşmazlıklara kadar geniş bir yelpazede müvekkillerine yüksek standartlarda hukuki destek sağlamaktadır.
             </p>
 
             <div className="about-features">
