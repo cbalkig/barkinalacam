@@ -431,4 +431,12 @@
   .contact-form {
     padding: 2rem;
   }
+  .about-badge {
+    padding: 1.5rem;
+    bottom: 0;
+    right: 0;
+  }
+  .about-badge .years {
+    font-size: 2rem;
+  }
 }

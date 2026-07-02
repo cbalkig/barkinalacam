@@ -63,7 +63,7 @@ function App() {
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container navbar-container">
-          <a href="#" className={`brand ${isMobileMenuOpen || isScrolled ? 'dark-text' : ''}`}>
+          <a href="#" className={`brand ${isScrolled ? 'dark-text' : ''}`}>
             Barkın <span>ALAÇAM</span>
           </a>
           
@@ -208,7 +208,7 @@ function App() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}
+              style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}
             >
               
               <div className="contact-item" style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '8px' }}>
