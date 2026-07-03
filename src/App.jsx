@@ -36,27 +36,27 @@ function App() {
     {
       icon: <Scale size={32} />,
       title: "Şirketler Hukuku",
-      description: "İşletmeler için stratejik hukuki danışmanlık, uyumluluğun sağlanması, uyuşmazlıkların çözümü ve büyümenin desteklenmesi."
+      description: "Kurumsal müvekkillerimizin ticari faaliyetlerinde hukuki güvenliği sağlamaya yönelik stratejik danışmanlık ve önleyici hukuk hizmetleri."
     },
     {
       icon: <Shield size={32} />,
       title: "Ceza Hukuku",
-      description: "Haklarınızı ve özgürlüğünüzü sarsılmaz bir adanmışlık ve stratejik hukuki yaklaşımla koruyan güçlü bir savunma."
+      description: "Soruşturma ve kovuşturma aşamalarında, müvekkillerimizin özgürlük ve temel haklarını güvence altına alan stratejik ve kararlı ceza savunması."
     },
     {
       icon: <Landmark size={32} />,
       title: "Gayrimenkul Hukuku",
-      description: "Karmaşık mülkiyet işlemleri, imar hukuku ve davalar sürecinde kapsamlı rehberlik."
+      description: "Gayrimenkul projelerinin geliştirilmesi, tapu iptal ve tescil davaları ile karmaşık mülkiyet hukuku ihtilaflarında kapsamlı hukuki danışmanlık."
     },
     {
       icon: <Users size={32} />,
       title: "Aile ve Boşanma Hukuku",
-      description: "Boşanma, nafaka, velayet ve mal paylaşımı süreçlerinde hassasiyetle ve üstün hukuki tecrübeyle müvekkillerin haklarının korunması."
+      description: "Çekişmeli ve anlaşmalı boşanma, velayet, nafaka ve mal rejiminin tasfiyesi süreçlerinde, mahremiyete azami özen gösterilerek sunulan hukuki danışmanlık."
     },
     {
       icon: <Handshake size={32} />,
       title: "Arabuluculuk ve Uyuşmazlık Çözümü",
-      description: "Resmi arabuluculuk yetkisiyle, uyuşmazlıkların mahkemeye taşınmadan hızlı, gizli ve tarafların menfaatine en uygun şekilde çözümlenmesi."
+      description: "Adalet Bakanlığı siciline kayıtlı uzman arabulucu sıfatıyla; ticari, iş ve aile hukuku uyuşmazlıklarının dava yoluna gidilmeden çözümlenmesi."
     }
   ];
 
@@ -95,10 +95,10 @@ function App() {
             variants={staggerContainer}
           >
             <motion.h1 variants={fadeUpVariant}>
-              Haklarınızı <span>tavizsiz</span> bir mükemmellikle savunuyoruz.
+              Hukuki İhtilaflarda <span>Üstün Strateji</span> ve Tavizsiz Temsil.
             </motion.h1>
             <motion.p variants={fadeUpVariant}>
-              Karmaşık hukuki zorluklar için stratejik savunma, kişiselleştirilmiş hukuki danışmanlık ve uzman arabuluculuk hizmetleri sunan seçkin bir hukuk bürosu.
+              Ulusal ve uluslararası standartlarda, sonuç odaklı hukuki danışmanlık, dava takibi ve uzman arabuluculuk hizmetleri sunan seçkin bir hukuk bürosu.
             </motion.p>
             <motion.div className="hero-btns" variants={fadeUpVariant}>
               <a href="#contact" className="btn btn-primary">BİZE ULAŞIN</a>
@@ -118,7 +118,7 @@ function App() {
             variants={fadeUpVariant}
           >
             <h2 className="section-title">Uzmanlık Alanlarımız</h2>
-            <p className="section-subtitle">Her müvekkilin kendine özgü ihtiyaçlarını karşılayacak şekilde uyarlanmış sofistike hukuki çözümler sunuyoruz.</p>
+            <p className="section-subtitle">Müvekkillerimizin hukuki ve ticari hedeflerine ulaşmaları için titizlikle kurgulanmış, yenilikçi ve sofistike çözümler.</p>
           </motion.div>
 
           <motion.div 
@@ -165,27 +165,27 @@ function App() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2>Hukuki Mükemmellik Mirası</h2>
+            <h2>Çeyrek Asırlık Hukuki Tecrübe ve İtibar</h2>
             <p>
-              Marmara Üniversitesi mezunu olan Barkın ALAÇAM, 2000 yılından bu yana hukuk sektöründe kesintisiz ve başarılı bir kariyere sahiptir. KATILIM Hukuk Bürosu ve 16 yılı aşkın süreyle ÖZGÜL Hukuk Bürosu'nda edindiği derin tecrübelerin ardından, 2020 yılında kendi ofisi olan Alaçam Avukatlık ve Hukuk Danışmanlığı'nı kurmuştur.
+              Marmara Üniversitesi Hukuk Fakültesi mezunu olan Av. Barkın ALAÇAM, 2000 yılından bu yana avukatlık mesleğini kesintisiz bir başarı ve aidiyetle sürdürmektedir. KATILIM Hukuk Bürosu'nda başlayan kariyerini, 16 yılı aşkın süreyle ÖZGÜL Hukuk Bürosu'nda edindiği köklü tecrübelerle pekiştirdikten sonra, 2020 yılında Alaçam Avukatlık ve Arabuluculuk Bürosu'nu kurmuştur.
             </p>
             <p>
-              Çeyrek asırlık mesleki birikimi ve resmi Arabulucu sıfatıyla; boşanma ve aile hukuku süreçlerinden, karmaşık ticari uyuşmazlıklara kadar geniş bir yelpazede müvekkillerine yüksek standartlarda hukuki destek sağlamaktadır.
+              Çeyrek asırlık mesleki birikimi, derin içtihat hakimiyeti ve Adalet Bakanlığı siciline kayıtlı Resmi Arabulucu sıfatıyla; aile hukukundan doğan hassas süreçlerden, karmaşık ticari ve cezai ihtilaflara kadar geniş bir yelpazede müvekkillerine sonuç odaklı, üst düzey hukuki destek sağlamaktadır.
             </p>
 
             <div className="about-features">
               <div className="about-feature">
                 <CheckCircle2 className="feature-icon" size={24} />
                 <div className="feature-text">
-                  <h4>Stratejik Yaklaşım</h4>
-                  <p>Karmaşık hukuki meseleler için yenilikçi çözümler geliştiriyoruz.</p>
+                  <h4>Proaktif Hukuk Anlayışı</h4>
+                  <p>Hukuki riskleri önceden tespit ederek, ihtilafları doğmadan engellemeye yönelik stratejiler geliştiriyoruz.</p>
                 </div>
               </div>
               <div className="about-feature">
                 <CheckCircle2 className="feature-icon" size={24} />
                 <div className="feature-text">
-                  <h4>Müvekkil Odaklılık</h4>
-                  <p>Sizi her adımda bilgilendirmeye ve güçlendirmeye kararlıyız.</p>
+                  <h4>Müvekkil Gizliliği ve Şeffaflık</h4>
+                  <p>Müvekkil mahremiyetini en üst düzeyde korurken, sürecin her aşamasında şeffaf ve anlaşılır bir iletişim sunuyoruz.</p>
                 </div>
               </div>
             </div>
@@ -202,8 +202,8 @@ function App() {
             viewport={{ once: true }}
             variants={fadeUpVariant}
           >
-            <h2 className="section-title">İletişime Geçin</h2>
-            <p className="section-subtitle">Hukuki ihtiyaçlarınızı güvenle ve gizlilikle görüşmek için büromuzla iletişime geçin.</p>
+            <h2 className="section-title">Hukuki Destek İçin İletişim</h2>
+            <p className="section-subtitle">Hukuki ihtilaflarınız, danışmanlık ve arabuluculuk ihtiyaçlarınız için büromuzdan randevu alabilirsiniz.</p>
           </motion.div>
 
           <div className="contact-container">
