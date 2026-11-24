@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   Menu, X, Scale, Shield, Landmark, MapPin, Phone, Mail, Clock, Briefcase,
-  FileSignature, Building2, Gavel, Handshake, Home, Users, Stamp, Check, ArrowRight,
+  FileSignature, Building2, Gavel, Handshake, Home, Users, Check, ArrowRight,
   ChevronDown, MessageCircle, Send,
 } from 'lucide-react';
 import { motion, MotionConfig } from 'framer-motion';
@@ -12,7 +12,7 @@ import {
 import './App.css';
 
 const icons = {
-  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users, Stamp,
+  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users,
 };
 
 const fadeUp = {
@@ -101,7 +101,7 @@ function Hero() {
           </motion.h1>
           <motion.p variants={fadeUp}>
             Kurumsal müvekkillere sözleşmelerden ticari uyuşmazlıklara kadar önleyici ve
-            çözüm odaklı destek; marka tescili, gayrimenkul ve aile hukukunda titiz takip.
+            çözüm odaklı destek; gayrimenkul ve aile hukukunda ise titiz dava takibi.
           </motion.p>
           <motion.div className="hero-actions" variants={fadeUp}>
             <a href="#iletisim" className="btn btn-gold">
@@ -201,8 +201,8 @@ function Expertise() {
       <div className="container">
         <SectionHeading
           eyebrow="Uzmanlık Alanları"
-          title="Derinlemesine deneyim gerektiren alanlar."
-          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan alanlar; hem şirketler hem bireyler için."
+          title="Gayrimenkul ve aile hukukunda derin deneyim."
+          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan iki alan; hem şirketler hem bireyler için."
         />
 
         <div className="featured">
@@ -413,7 +413,6 @@ function ContactForm() {
             <option value="">Seçiniz</option>
             <option>Kurumsal Danışmanlık</option>
             <option>Sözleşmeler</option>
-            <option>Marka Tescili</option>
             <option>Gayrimenkul</option>
             <option>Boşanma / Aile</option>
             <option>Arabuluculuk</option>

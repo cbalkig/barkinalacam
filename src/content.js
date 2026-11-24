@@ -46,12 +46,12 @@ export const corporateServices = [
   {
     icon: 'Building2',
     title: 'Şirketler ve Ticaret Hukuku',
-    text: 'Şirket kuruluşu, esas sözleşme değişiklikleri, genel kurul ve yönetim kurulu işlemleri, pay devirleri ve ortaklar arası uyuşmazlıklar.',
+    text: 'Şirket kuruluşu, esas sözleşme değişiklikleri, genel kurul ve yönetim kurulu işlemleri, pay devirleri, ortaklar arası uyuşmazlıklar ve ticari uyuşmazlıklar.',
   },
   {
     icon: 'Landmark',
-    title: 'Kurumsal Gayrimenkul',
-    text: 'Ticari taşınmaz alım-satımı ve kiralamasında hukuki inceleme, kat karşılığı inşaat ve proje sözleşmeleri, kira ilişkilerinin yönetimi.',
+    title: 'Gayrimenkul Hukuku',
+    text: 'Taşınmaz alım-satımı ve kiralamasında hukuki inceleme, tapu iptali ve tescil davaları, kat karşılığı inşaat sözleşmeleri, kira ve kat mülkiyeti uyuşmazlıkları.',
   },
   {
     icon: 'Gavel',
@@ -60,8 +60,8 @@ export const corporateServices = [
   },
   {
     icon: 'Handshake',
-    title: 'Ticari Arabuluculuk',
-    text: 'Dava şartı ve ihtiyari arabuluculuk süreçlerinde şirketin temsili; Adalet Bakanlığı siciline kayıtlı arabulucu deneyimiyle uzlaşma odaklı çözüm.',
+    title: 'Arabuluculuk',
+    text: 'Ticari, iş, kira, tüketici ve ortaklık uyuşmazlıkları dahil her türlü dava şartı ve ihtiyari arabuluculuk işleminde arabuluculuk ve taraf vekilliği; Adalet Bakanlığı siciline kayıtlı arabulucu deneyimiyle uzlaşma odaklı çözüm.',
   },
 ];
 
@@ -105,23 +105,6 @@ export const featuredAreas = [
       'Maddi ve manevi tazminat talepleri',
       'Yabancı boşanma kararlarının tanınması',
       'Aile içi arabuluculuk ve uzlaşma',
-    ],
-  },
-  {
-    id: 'marka',
-    icon: 'Stamp',
-    kicker: 'Öne Çıkan Alan',
-    title: 'Marka Tescili ve Fikri Mülkiyet',
-    text: 'Bir şirketin markası, çoğu zaman en değerli ticari varlığıdır. Tescil öncesi araştırmadan TÜRKPATENT süreçlerine, itirazlardan marka hakkına tecavüz davalarına kadar markanızın korunması uçtan uca takip edilir.',
-    items: [
-      'Marka araştırması ve tescil edilebilirlik analizi',
-      'TÜRKPATENT nezdinde marka başvurusu ve takibi',
-      'Yayına itiraz ve itirazlara karşı görüş',
-      'YİDK kararlarına karşı iptal davaları',
-      'Marka hükümsüzlüğü ve iptal davaları',
-      'Marka hakkına tecavüz ve haksız rekabet davaları',
-      'Lisans ve devir sözleşmeleri',
-      'Marka yenileme ve portföy yönetimi',
     ],
   },
 ];
@@ -177,10 +160,6 @@ export const faqs = [
   {
     q: 'Anlaşmalı boşanma için hangi şartlar gerekir?',
     a: 'Evliliğin en az bir yıl sürmüş olması, eşlerin birlikte başvurması ya da birinin davasını diğerinin kabul etmesi ve hâkimin tarafları bizzat dinlemesi gerekir. Velayet, nafaka ve mal paylaşımı gibi konuların düzenlendiği protokolün hâkim tarafından uygun bulunması da şarttır.',
-  },
-  {
-    q: 'Marka tescili ne kadar sürer ve koruma ne kadar geçerlidir?',
-    a: 'Başvuru TÜRKPATENT tarafından incelendikten sonra Resmî Marka Bülteni’nde yayımlanır ve iki aylık itiraz süresi başlar. İtiraz olmayan başvurularda süreç genellikle birkaç ay ile bir yıl arasında tamamlanır. Tescilli marka, başvuru tarihinden itibaren 10 yıl korunur ve 10’ar yıllık dönemlerle yenilenebilir.',
   },
   {
     q: 'Taşınmaz satın almadan önce neden hukuki inceleme yaptırmalıyım?',
