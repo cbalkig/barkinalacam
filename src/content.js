@@ -51,7 +51,7 @@ export const corporateServices = [
   {
     icon: 'Landmark',
     title: 'Gayrimenkul Hukuku',
-    text: 'Taşınmaz alım-satımı ve kiralamasında hukuki inceleme, tapu iptali ve tescil davaları, kat karşılığı inşaat sözleşmeleri, kira ve kat mülkiyeti uyuşmazlıkları.',
+    text: 'Taşınmaz alım-satımında hukuki inceleme, tapu iptali ve tescil davaları, kat karşılığı inşaat sözleşmeleri ve ortaklığın giderilmesi.',
   },
   {
     icon: 'Gavel',
@@ -78,15 +78,13 @@ export const featuredAreas = [
     icon: 'Home',
     kicker: 'Öne Çıkan Alan',
     title: 'Gayrimenkul Hukuku',
-    text: 'Taşınmaz, çoğu müvekkil için en değerli varlıktır. Alım-satım öncesi incelemeden tapu davalarına, kira uyuşmazlıklarından kat karşılığı inşaat projelerine kadar mülkiyetle ilgili her aşamada hukuki destek sağlanır.',
+    text: 'Taşınmaz, çoğu müvekkil için en değerli varlıktır. Alım-satım öncesi incelemeden tapu davalarına ve kat karşılığı inşaat projelerine kadar mülkiyetle ilgili her aşamada hukuki destek sağlanır.',
     items: [
       'Tapu iptali ve tescil davaları',
       'Kat karşılığı inşaat sözleşmeleri',
-      'Kira tespit, uyarlama ve tahliye davaları',
       'Ortaklığın giderilmesi (izale-i şuyu)',
       'Önalım (şufa) ve muris muvazaası davaları',
       'Alım-satım öncesi hukuki inceleme',
-      'Kat mülkiyeti ve site yönetimi uyuşmazlıkları',
       'Kamulaştırma ve el atmanın önlenmesi',
     ],
   },
@@ -94,7 +92,7 @@ export const featuredAreas = [
     id: 'aile',
     icon: 'Users',
     kicker: 'Öne Çıkan Alan',
-    title: 'Aile ve Boşanma Hukuku',
+    title: 'Aile Hukuku',
     text: 'Boşanma süreçleri hem duygusal hem de mali açıdan yıpratıcı olabilir. Süreç, mahremiyete özen gösterilerek, mümkün olan durumlarda uzlaşma önceliğiyle ve gerektiğinde kararlı bir dava takibiyle yürütülür.',
     items: [
       'Anlaşmalı boşanma ve protokol hazırlığı',
