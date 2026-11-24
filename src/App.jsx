@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import {
   Menu, X, Scale, Shield, Landmark, MapPin, Phone, Mail, Clock, Briefcase,
-  FileSignature, Building2, Gavel, Handshake, Home, Users, Check, ArrowRight,
+  FileSignature, Building2, Gavel, Handshake, Home, Users, Stamp, Check, ArrowRight,
   ChevronDown, MessageCircle, Send,
 } from 'lucide-react';
 import { motion, MotionConfig } from 'framer-motion';
 import {
   contact, nav, corporateServices, corporateBenefits, featuredAreas,
-  otherAreas, process, timeline, faqs,
+  otherAreas, process, timeline, faqs, getEmail,
 } from './content';
 import './App.css';
 
 const icons = {
-  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users,
+  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users, Stamp,
 };
 
 const fadeUp = {
@@ -101,7 +101,7 @@ function Hero() {
           </motion.h1>
           <motion.p variants={fadeUp}>
             Kurumsal müvekkillere sözleşmelerden ticari uyuşmazlıklara kadar önleyici ve
-            çözüm odaklı destek; gayrimenkul ve aile hukukunda ise titiz dava takibi.
+            çözüm odaklı destek; marka tescili, gayrimenkul ve aile hukukunda titiz takip.
           </motion.p>
           <motion.div className="hero-actions" variants={fadeUp}>
             <a href="#iletisim" className="btn btn-gold">
@@ -201,8 +201,8 @@ function Expertise() {
       <div className="container">
         <SectionHeading
           eyebrow="Uzmanlık Alanları"
-          title="Gayrimenkul ve aile hukukunda derin deneyim."
-          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan iki alan; hem şirketler hem bireyler için."
+          title="Derinlemesine deneyim gerektiren alanlar."
+          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan alanlar; hem şirketler hem bireyler için."
         />
 
         <div className="featured">
@@ -369,7 +369,7 @@ function ContactForm() {
       '',
       form.message,
     ].filter((l) => l !== null).join('\n');
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${getEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -413,6 +413,7 @@ function ContactForm() {
             <option value="">Seçiniz</option>
             <option>Kurumsal Danışmanlık</option>
             <option>Sözleşmeler</option>
+            <option>Marka Tescili</option>
             <option>Gayrimenkul</option>
             <option>Boşanma / Aile</option>
             <option>Arabuluculuk</option>
@@ -466,8 +467,7 @@ function Contact() {
               <div>
                 <h4>Telefon</h4>
                 <p>
-                  Ofis: <a href={contact.phoneOfficeHref}>{contact.phoneOffice}</a><br />
-                  Mobil: <a href={contact.phoneMobileHref}>{contact.phoneMobile}</a>
+                  <a href={contact.phoneMobileHref}>{contact.phoneMobile}</a>
                 </p>
                 <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-link">WhatsApp ile yazın <ArrowRight size={15} /></a>
               </div>
@@ -476,7 +476,14 @@ function Contact() {
               <Mail size={22} />
               <div>
                 <h4>E-posta</h4>
-                <p><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+                <p>Talebinizi yandaki form ile iletebilir ya da doğrudan e-posta gönderebilirsiniz.</p>
+                <button
+                  type="button"
+                  className="btn btn-outline-gold btn-sm"
+                  onClick={() => { window.location.href = `mailto:${getEmail()}?subject=${encodeURIComponent('Görüşme Talebi')}`; }}
+                >
+                  E-posta Gönder <Send size={15} />
+                </button>
               </div>
             </motion.div>
             <motion.div className="info-item" variants={fadeUp}>

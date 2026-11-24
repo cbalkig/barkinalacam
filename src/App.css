@@ -296,6 +296,10 @@
 .consent input { margin-top: 3px; accent-color: var(--navy-900); width: 16px; height: 16px; }
 .form-note { font-size: .75rem; color: var(--muted); text-align: center; }
 
+.btn-outline-gold { border-color: var(--gold); color: var(--gold); }
+.btn-outline-gold:hover { background: var(--gold); color: var(--navy-950); }
+.btn-sm { padding: .6rem 1.1rem; font-size: .75rem; }
+
 /* ---------- Footer ---------- */
 .footer { background: var(--navy-950); color: var(--muted-light); padding: 4rem 0 2rem; }
 .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.08); }

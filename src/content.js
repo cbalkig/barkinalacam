@@ -10,18 +10,19 @@ export const contact = {
     'A Blok D: 16',
     '34880 Kartal / İstanbul',
   ],
-  phoneOffice: '+90 216 309 00 22',
-  phoneOfficeHref: 'tel:+902163090022',
   phoneMobile: '+90 530 035 43 59',
   phoneMobileHref: 'tel:+905300354359',
   whatsapp: 'https://wa.me/905300354359',
-  email: 'barkinalacam@gmail.com',
+  // Adres, spam botlarının toplamasını zorlaştırmak için parçalı tutulur ve sayfada gösterilmez.
+  emailParts: ['barkinalacam', 'gmail.com'],
   mapLink:
     'https://www.google.com/maps/search/?api=1&query=Helenium+Twins+Baltac%C4%B1+Mehmet+Pa%C5%9Fa+Sk+Kartal+%C4%B0stanbul',
   mapEmbed:
     'https://maps.google.com/maps?q=Helenium%20Twins%2C%20Kartal%2C%20%C4%B0stanbul&z=15&output=embed',
   hours: 'Hafta içi 09:00 – 18:00 · Randevu ile',
 };
+
+export const getEmail = () => contact.emailParts.join('@');
 
 export const nav = [
   { href: '#kurumsal', label: 'Kurumsal Danışmanlık' },
@@ -106,6 +107,23 @@ export const featuredAreas = [
       'Aile içi arabuluculuk ve uzlaşma',
     ],
   },
+  {
+    id: 'marka',
+    icon: 'Stamp',
+    kicker: 'Öne Çıkan Alan',
+    title: 'Marka Tescili ve Fikri Mülkiyet',
+    text: 'Bir şirketin markası, çoğu zaman en değerli ticari varlığıdır. Tescil öncesi araştırmadan TÜRKPATENT süreçlerine, itirazlardan marka hakkına tecavüz davalarına kadar markanızın korunması uçtan uca takip edilir.',
+    items: [
+      'Marka araştırması ve tescil edilebilirlik analizi',
+      'TÜRKPATENT nezdinde marka başvurusu ve takibi',
+      'Yayına itiraz ve itirazlara karşı görüş',
+      'YİDK kararlarına karşı iptal davaları',
+      'Marka hükümsüzlüğü ve iptal davaları',
+      'Marka hakkına tecavüz ve haksız rekabet davaları',
+      'Lisans ve devir sözleşmeleri',
+      'Marka yenileme ve portföy yönetimi',
+    ],
+  },
 ];
 
 export const otherAreas = [
@@ -159,6 +177,10 @@ export const faqs = [
   {
     q: 'Anlaşmalı boşanma için hangi şartlar gerekir?',
     a: 'Evliliğin en az bir yıl sürmüş olması, eşlerin birlikte başvurması ya da birinin davasını diğerinin kabul etmesi ve hâkimin tarafları bizzat dinlemesi gerekir. Velayet, nafaka ve mal paylaşımı gibi konuların düzenlendiği protokolün hâkim tarafından uygun bulunması da şarttır.',
+  },
+  {
+    q: 'Marka tescili ne kadar sürer ve koruma ne kadar geçerlidir?',
+    a: 'Başvuru TÜRKPATENT tarafından incelendikten sonra Resmî Marka Bülteni’nde yayımlanır ve iki aylık itiraz süresi başlar. İtiraz olmayan başvurularda süreç genellikle birkaç ay ile bir yıl arasında tamamlanır. Tescilli marka, başvuru tarihinden itibaren 10 yıl korunur ve 10’ar yıllık dönemlerle yenilenebilir.',
   },
   {
     q: 'Taşınmaz satın almadan önce neden hukuki inceleme yaptırmalıyım?',
