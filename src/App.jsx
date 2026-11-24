@@ -316,24 +316,61 @@ function About() {
   );
 }
 
+const emptyForm = { type: 'Kurumsal', name: '', company: '', phone: '', topic: '', message: '', consent: false, website: '' };
+
 function ContactForm() {
-  const [form, setForm] = useState({ type: 'Kurumsal', name: '', company: '', phone: '', topic: '', message: '', consent: false });
+  const [form, setForm] = useState(emptyForm);
   const update = (k) => (e) => setForm({ ...form, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
 
-  const submit = (e) => {
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+
+  const submit = async (e) => {
     e.preventDefault();
-    const subject = `Görüşme Talebi – ${form.type}${form.topic ? ` – ${form.topic}` : ''}`;
-    const body = [
-      `Müvekkil türü: ${form.type}`,
-      `Ad Soyad: ${form.name}`,
-      form.type === 'Kurumsal' && form.company ? `Şirket: ${form.company}` : null,
-      `Telefon: ${form.phone}`,
-      form.topic ? `Konu: ${form.topic}` : null,
-      '',
-      form.message,
-    ].filter((l) => l !== null).join('\n');
-    window.location.href = `mailto:${getEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (status === 'sending') return;
+    // Bal küpü alanı doluysa gönderen bir bottur; sessizce başarılı göster.
+    if (form.website) { setStatus('sent'); return; }
+    setStatus('sending');
+    const payload = {
+      _subject: `Görüşme Talebi – ${form.type}${form.topic ? ` – ${form.topic}` : ''}`,
+      _template: 'table',
+      _captcha: 'false',
+      'Müvekkil türü': form.type,
+      'Ad Soyad': form.name,
+      ...(form.type === 'Kurumsal' && form.company ? { Şirket: form.company } : {}),
+      Telefon: form.phone,
+      ...(form.topic ? { Konu: form.topic } : {}),
+      Mesaj: form.message,
+    };
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${getEmail()}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || `HTTP ${res.status}`);
+      setStatus('sent');
+    } catch {
+      setStatus('error');
+    }
   };
+
+  if (status === 'sent') {
+    return (
+      <div className="contact-form form-success" role="status" aria-live="polite">
+        <div className="form-success-icon"><Check size={28} /></div>
+        <h3>Talebiniz alındı.</h3>
+        <p>Teşekkür ederiz. En kısa sürede verdiğiniz telefon numarasından size dönüş yapılacaktır.</p>
+        <button
+          type="button"
+          className="text-link"
+          onClick={() => { setForm({ ...emptyForm, type: form.type }); setStatus('idle'); }}
+        >
+          Yeni bir talep gönder <ArrowRight size={15} />
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form className="contact-form" onSubmit={submit}>
@@ -396,10 +433,22 @@ function ContactForm() {
           yapılması amacıyla işlenmesini kabul ediyorum.
         </span>
       </label>
-      <button type="submit" className="btn btn-gold btn-block">
-        Gönder <Send size={17} />
+      <input
+        className="hp-field" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+        value={form.website} onChange={update('website')}
+      />
+      <button type="submit" className="btn btn-gold btn-block" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Gönderiliyor…' : <>Gönder <Send size={17} /></>}
       </button>
-      <p className="form-note">Gönder’e bastığınızda e-posta uygulamanız mesajınız hazır şekilde açılır.</p>
+      {status === 'error' ? (
+        <p className="form-note form-error" role="alert">
+          Talebiniz şu anda gönderilemedi. Lütfen tekrar deneyin ya da{' '}
+          <a href={contact.phoneMobileHref}>telefonla</a> veya{' '}
+          <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp üzerinden</a> ulaşın.
+        </p>
+      ) : (
+        <p className="form-note">Talebiniz doğrudan büromuza iletilir; size telefonla dönüş yapılır.</p>
+      )}
     </form>
   );
 }
@@ -439,7 +488,7 @@ function Contact() {
               <Mail size={22} />
               <div>
                 <h4>E-posta</h4>
-                <p>Talebinizi yandaki form ile iletebilir ya da doğrudan e-posta gönderebilirsiniz.</p>
+                <p>Talebinizi görüşme formu ile iletebilir ya da doğrudan e-posta gönderebilirsiniz.</p>
                 <button
                   type="button"
                   className="btn btn-outline-gold btn-sm"
