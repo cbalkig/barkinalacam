@@ -62,6 +62,11 @@ export const corporateServices = [
     title: 'Arabuluculuk',
     text: 'Ticari, iş, kira, tüketici ve ortaklık uyuşmazlıkları dahil her türlü dava şartı ve ihtiyari arabuluculuk işleminde arabuluculuk ve taraf vekilliği; Adalet Bakanlığı siciline kayıtlı arabulucu deneyimiyle uzlaşma odaklı çözüm.',
   },
+  {
+    icon: 'Lightbulb',
+    title: 'Fikri ve Sınai Mülkiyet Hukuku',
+    text: 'Marka hakkına tecavüz, hükümsüzlük ve iptal davaları, haksız rekabet, tasarım, patent ve telif uyuşmazlıkları; şirketin marka ve fikri haklarının dava yoluyla korunması.',
+  },
 ];
 
 export const corporateBenefits = [

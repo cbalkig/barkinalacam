@@ -126,6 +126,8 @@
   background: var(--gold); transform: scaleX(0); transform-origin: left;
   transition: transform .5s var(--ease);
 }
+/* Son satırda tek kalan kart satırı boydan boya kaplar. */
+.service-card:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
 .service-card:hover::before { transform: scaleX(1); }
 .service-card:hover { background: #FDFCF9; }
 .service-icon {
@@ -311,6 +313,8 @@
   .nav-links { gap: 1.4rem; }
   .nav-links a:not(.btn) { font-size: .8rem; }
   .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-card:last-child:nth-child(3n+1) { grid-column: auto; }
+  .service-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .hero-grid { gap: 3rem; }
 }
 
