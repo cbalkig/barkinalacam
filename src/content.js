@@ -141,7 +141,7 @@ export const process = [
 
 export const timeline = [
   { year: '2000', text: 'Marmara Üniversitesi Hukuk Fakültesi’nden mezuniyet; KATILIM Hukuk Bürosu’nda avukatlık.' },
-  { year: '16+ yıl', text: 'ÖZGÜL Hukuk Bürosu’nda 16 yılı aşkın süre boyunca ticari, gayrimenkul ve aile hukuku dosyaları.' },
+  { year: '16+ yıl', text: 'ÖZGÜL Hukuk Bürosu’nda 16 yılı aşkın süre boyunca ticaret, organize sanayi bölgeleri, şirketlere hukuki danışmanlık, gayrimenkul ve aile hukukuna ilişkin davalarda çalışmıştır.' },
   { year: '2020', text: 'Alaçam Avukatlık ve Arabuluculuk Bürosu’nun kuruluşu.' },
   { year: 'Bugün', text: 'Şirketlere sürekli danışmanlık, gayrimenkul ve aile hukuku davaları, arabuluculuk.' },
 ];
