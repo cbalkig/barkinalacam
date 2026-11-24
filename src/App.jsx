@@ -1,271 +1,566 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Scale, Shield, Landmark, BookOpen, MapPin, Phone, Mail, CheckCircle2, MessageCircle, Users, Handshake } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import {
+  Menu, X, Scale, Shield, Landmark, MapPin, Phone, Mail, Clock, Briefcase,
+  FileSignature, Building2, Gavel, Handshake, Home, Users, Check, ArrowRight,
+  ChevronDown, MessageCircle, Send,
+} from 'lucide-react';
+import { motion, MotionConfig } from 'framer-motion';
+import {
+  contact, nav, corporateServices, corporateBenefits, featuredAreas,
+  otherAreas, process, timeline, faqs,
+} from './content';
 import './App.css';
 
-const fadeUpVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+const icons = {
+  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users,
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
 };
 
-function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const inView = {
+  initial: 'hidden',
+  whileInView: 'visible',
+  viewport: { once: true, margin: '-80px' },
+};
 
-  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
-  const practiceAreas = [
-    {
-      icon: <Scale size={32} />,
-      title: "Şirketler Hukuku",
-      description: "Kurumsal müvekkillerimizin ticari faaliyetlerinde hukuki güvenliği sağlamaya yönelik stratejik danışmanlık ve önleyici hukuk hizmetleri."
-    },
-    {
-      icon: <Shield size={32} />,
-      title: "Ceza Hukuku",
-      description: "Soruşturma ve kovuşturma aşamalarında, müvekkillerimizin özgürlük ve temel haklarını güvence altına alan stratejik ve kararlı ceza savunması."
-    },
-    {
-      icon: <Landmark size={32} />,
-      title: "Gayrimenkul Hukuku",
-      description: "Gayrimenkul projelerinin geliştirilmesi, tapu iptal ve tescil davaları ile karmaşık mülkiyet hukuku ihtilaflarında kapsamlı hukuki danışmanlık."
-    },
-    {
-      icon: <Users size={32} />,
-      title: "Aile ve Boşanma Hukuku",
-      description: "Çekişmeli ve anlaşmalı boşanma, velayet, nafaka ve mal rejiminin tasfiyesi süreçlerinde, mahremiyete azami özen gösterilerek sunulan hukuki danışmanlık."
-    },
-    {
-      icon: <Handshake size={32} />,
-      title: "Arabuluculuk ve Uyuşmazlık Çözümü",
-      description: "Adalet Bakanlığı siciline kayıtlı uzman arabulucu sıfatıyla; ticari, iş ve aile hukuku uyuşmazlıklarının dava yoluna gidilmeden çözümlenmesi."
-    }
-  ];
-
-  const mapLink = "https://www.google.com/maps?vet=10CAAQoqAOahcKEwjI_Orq9bOVAxUAAAAAHQAAAAAQDA..i&pvq=Cg0vZy8xMXJjcmQ3dzZkIhIKDGFsYWNhbSBodWt1axACGAM&lqi=CgxhbGFjYW0gaHVrdWuSAQhsYXdfZmlybQ&fvr=1&cs=0&um=1&ie=UTF-8&fb=1&gl=tr&sa=X&ftid=0x14cac5f026582b27:0x6b14939faafc0a39";
-  const emailAddress = "barkinalacam@gmail.com";
-
+function SectionHeading({ eyebrow, title, text, light = false, align = 'center' }) {
   return (
-    <>
-      {/* Navigation */}
-      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container navbar-container">
-          <a href="#" className={`brand ${isScrolled ? 'dark-text' : ''}`}>
-            Barkın <span>ALAÇAM</span>
-          </a>
-          
-          <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
-            <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>ANA SAYFA</a>
-            <a href="#expertise" onClick={() => setIsMobileMenuOpen(false)}>UZMANLIK</a>
-            <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>HAKKIMIZDA</a>
-            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>İLETİŞİM</a>
-          </div>
-
-          <button className={`mobile-toggle ${isMobileMenuOpen || isScrolled ? 'dark-text' : ''}`} onClick={toggleMenu}>
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section id="home" className="hero">
-        <div className="container">
-          <motion.div 
-            className="hero-content"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.h1 variants={fadeUpVariant}>
-              Hukuki İhtilaflarda <span>Üstün Strateji</span> ve Tavizsiz Temsil.
-            </motion.h1>
-            <motion.p variants={fadeUpVariant}>
-              Ulusal ve uluslararası standartlarda, sonuç odaklı hukuki danışmanlık, dava takibi ve uzman arabuluculuk hizmetleri sunan seçkin bir hukuk bürosu.
-            </motion.p>
-            <motion.div className="hero-btns" variants={fadeUpVariant}>
-              <a href="#contact" className="btn btn-primary">BİZE ULAŞIN</a>
-              <a href="#expertise" className="btn btn-outline">UZMANLIK ALANLARIMIZ</a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Expertise Section */}
-      <section id="expertise" className="section expertise">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUpVariant}
-          >
-            <h2 className="section-title">Uzmanlık Alanlarımız</h2>
-            <p className="section-subtitle">Müvekkillerimizin hukuki ve ticari hedeflerine ulaşmaları için titizlikle kurgulanmış, yenilikçi ve sofistike çözümler.</p>
-          </motion.div>
-
-          <motion.div 
-            className="expertise-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            {practiceAreas.map((area, index) => (
-              <motion.div className="expertise-card" key={index} variants={fadeUpVariant}>
-                <div className="expertise-icon">{area.icon}</div>
-                <h3>{area.title}</h3>
-                <p>{area.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="section about">
-        <div className="container about-container">
-          <motion.div 
-            className="about-image"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="about-image-wrapper">
-               <img src={`${import.meta.env.BASE_URL}images/portrait.jpg`} alt="Barkın ALAÇAM" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-            </div>
-            <div className="about-badge">
-              <div className="years">25+</div>
-              <div className="text">YILLIK<br/>TECRÜBE</div>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className="about-content"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2>Çeyrek Asırlık Hukuki Tecrübe ve İtibar</h2>
-            <p>
-              Marmara Üniversitesi Hukuk Fakültesi mezunu olan Av. Barkın ALAÇAM, 2000 yılından bu yana avukatlık mesleğini kesintisiz bir başarı ve aidiyetle sürdürmektedir. KATILIM Hukuk Bürosu'nda başlayan kariyerini, 16 yılı aşkın süreyle ÖZGÜL Hukuk Bürosu'nda edindiği köklü tecrübelerle pekiştirdikten sonra, 2020 yılında Alaçam Avukatlık ve Arabuluculuk Bürosu'nu kurmuştur.
-            </p>
-            <p>
-              Çeyrek asırlık mesleki birikimi, derin içtihat hakimiyeti ve Adalet Bakanlığı siciline kayıtlı Resmi Arabulucu sıfatıyla; aile hukukundan doğan hassas süreçlerden, karmaşık ticari ve cezai ihtilaflara kadar geniş bir yelpazede müvekkillerine sonuç odaklı, üst düzey hukuki destek sağlamaktadır.
-            </p>
-
-            <div className="about-features">
-              <div className="about-feature">
-                <CheckCircle2 className="feature-icon" size={24} />
-                <div className="feature-text">
-                  <h4>Proaktif Hukuk Anlayışı</h4>
-                  <p>Hukuki riskleri önceden tespit ederek, ihtilafları doğmadan engellemeye yönelik stratejiler geliştiriyoruz.</p>
-                </div>
-              </div>
-              <div className="about-feature">
-                <CheckCircle2 className="feature-icon" size={24} />
-                <div className="feature-text">
-                  <h4>Müvekkil Gizliliği ve Şeffaflık</h4>
-                  <p>Müvekkil mahremiyetini en üst düzeyde korurken, sürecin her aşamasında şeffaf ve anlaşılır bir iletişim sunuyoruz.</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="section contact">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUpVariant}
-          >
-            <h2 className="section-title">Hukuki Destek İçin İletişim</h2>
-            <p className="section-subtitle">Hukuki ihtilaflarınız, danışmanlık ve arabuluculuk ihtiyaçlarınız için büromuzdan randevu alabilirsiniz.</p>
-          </motion.div>
-
-          <div className="contact-container">
-            <motion.div 
-              className="contact-info"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              style={{ gridColumn: '1 / -1', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}
-            >
-              
-              <div className="contact-item" style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '8px' }}>
-                <MapPin className="contact-icon" size={32} />
-                <div>
-                  <h4>Alaçam Hukuk Bürosu</h4>
-                  <p style={{ marginBottom: '1rem', fontSize: '0.9rem', lineHeight: '1.4' }}>
-                    HELENİUM TWİNS, Soğanlık Yeni<br/>
-                    Baltacı Mehmet Paşa Sk.<br/>
-                    NO:1/1 A BLOK D:16<br/>
-                    34880 Kartal/İstanbul
-                  </p>
-                  <a href={mapLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem' }}>HARİTADA GÖR</a>
-                </div>
-              </div>
-              
-              <div className="contact-item" style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '8px' }}>
-                <Phone className="contact-icon" size={32} />
-                <div>
-                  <h4>Telefon</h4>
-                  <p style={{ marginBottom: '0.2rem', fontSize: '0.9rem' }}>Ofis: +90 216 309 00 22</p>
-                  <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>Mobil: +90 530 035 43 59</p>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <a href="tel:+902163090022" className="btn btn-primary" style={{ padding: '0.5rem', fontSize: '0.8rem', flex: 1, textAlign: 'center' }}>OFİSİ ARA</a>
-                    <a href="https://wa.me/905300354359" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ padding: '0.5rem', fontSize: '0.8rem', flex: 1, textAlign: 'center' }}>WHATSAPP</a>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="contact-item" style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '8px' }}>
-                <Mail className="contact-icon" size={32} />
-                <div>
-                  <h4>E-Posta</h4>
-                  <p style={{ marginBottom: '1rem' }}>Doğrudan e-posta gönderin.</p>
-                  <a href={`mailto:${emailAddress}`} className="btn btn-outline" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', width: '100%' }}>E-POSTA YAZ</a>
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-brand">Barkın <span>ALAÇAM</span></div>
-          <p>&copy; {new Date().getFullYear()} Alaçam Hukuk Bürosu. Tüm hakları saklıdır.</p>
-        </div>
-      </footer>
-    </>
+    <motion.div className={`section-heading ${align} ${light ? 'light' : ''}`} {...inView} variants={fadeUp}>
+      <span className="eyebrow">{eyebrow}</span>
+      <h2>{title}</h2>
+      {text && <p>{text}</p>}
+    </motion.div>
   );
 }
 
-export default App;
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+  }, [open]);
+
+  const close = () => setOpen(false);
+
+  return (
+    <header className={`navbar ${scrolled ? 'scrolled' : ''} ${open ? 'menu-open' : ''}`}>
+      <div className="container navbar-inner">
+        <a href="#top" className="brand" onClick={close} aria-label="Ana sayfa">
+          <span className="brand-mark">A</span>
+          <span className="brand-text">
+            <span className="brand-name">Av. Barkın Alaçam</span>
+            <span className="brand-sub">Avukatlık &amp; Arabuluculuk</span>
+          </span>
+        </a>
+
+        <nav className={`nav-links ${open ? 'open' : ''}`} aria-label="Ana menü">
+          {nav.map((item) => (
+            <a key={item.href} href={item.href} onClick={close}>{item.label}</a>
+          ))}
+          <a href="#iletisim" className="btn btn-gold nav-cta" onClick={close}>Randevu Alın</a>
+        </nav>
+
+        <button
+          className="mobile-toggle"
+          onClick={() => setOpen(!open)}
+          aria-label={open ? 'Menüyü kapat' : 'Menüyü aç'}
+          aria-expanded={open}
+        >
+          {open ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </div>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="top" className="hero">
+      <div className="hero-pattern" aria-hidden="true" />
+      <div className="container hero-grid">
+        <motion.div className="hero-content" initial="hidden" animate="visible" variants={stagger}>
+          <motion.span className="eyebrow" variants={fadeUp}>İstanbul · 2000'den bu yana</motion.span>
+          <motion.h1 variants={fadeUp}>
+            Şirketiniz için <em>güvenilir</em> ve sürekli hukuki danışmanlık.
+          </motion.h1>
+          <motion.p variants={fadeUp}>
+            Kurumsal müvekkillere sözleşmelerden ticari uyuşmazlıklara kadar önleyici ve
+            çözüm odaklı destek; gayrimenkul ve aile hukukunda ise titiz dava takibi.
+          </motion.p>
+          <motion.div className="hero-actions" variants={fadeUp}>
+            <a href="#iletisim" className="btn btn-gold">
+              Ön Görüşme Planlayın <ArrowRight size={18} />
+            </a>
+            <a href="#kurumsal" className="btn btn-ghost">Kurumsal Hizmetler</a>
+          </motion.div>
+
+          <motion.dl className="hero-facts" variants={fadeUp}>
+            <div>
+              <dt>25+</dt>
+              <dd>yıllık mesleki deneyim</dd>
+            </div>
+            <div>
+              <dt>Arabulucu</dt>
+              <dd>Adalet Bakanlığı siciline kayıtlı</dd>
+            </div>
+            <div>
+              <dt>2020</dt>
+              <dd>Alaçam Hukuk Bürosu kuruluşu</dd>
+            </div>
+          </motion.dl>
+        </motion.div>
+
+        <motion.div
+          className="hero-portrait"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        >
+          <div className="portrait-frame">
+            <img
+              src={`${import.meta.env.BASE_URL}images/portrait.jpg`}
+              alt="Av. Barkın Alaçam"
+              width="1024"
+              height="1024"
+              fetchpriority="high"
+            />
+          </div>
+          <div className="portrait-caption">
+            <strong>Av. Barkın Alaçam</strong>
+            <span>Kurucu Avukat · Arabulucu</span>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Corporate() {
+  return (
+    <section id="kurumsal" className="section corporate">
+      <div className="container">
+        <SectionHeading
+          eyebrow="Kurumsal Danışmanlık"
+          title="İşinize odaklanın; hukuki riskleri birlikte yönetelim."
+          text="Şirketlerin ihtiyaç duyduğu şey çoğu zaman bir dava değil, doğru zamanda verilen doğru tavsiyedir. Büromuz, kurumsal müvekkillerine kesintisiz ve öngörülebilir bir hukuki destek sunar."
+        />
+
+        <motion.div className="service-grid" {...inView} variants={stagger}>
+          {corporateServices.map((s) => {
+            const Icon = icons[s.icon];
+            return (
+              <motion.article className="service-card" key={s.title} variants={fadeUp}>
+                <div className="service-icon"><Icon size={26} strokeWidth={1.5} /></div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+
+        <motion.div className="retainer" {...inView} variants={fadeUp}>
+          <div className="retainer-text">
+            <span className="eyebrow">Aylık Danışmanlık Modeli</span>
+            <h3>Şirketiniz için bir hukuk departmanı gibi çalışırız.</h3>
+            <p>
+              Kendi hukuk birimini kurmak istemeyen ya da mevcut birimine dış destek arayan
+              şirketler için kapsamı yazılı olarak belirlenen sürekli danışmanlık.
+            </p>
+            <a href="#iletisim" className="btn btn-gold">Teklif İsteyin <ArrowRight size={18} /></a>
+          </div>
+          <ul className="retainer-list">
+            {corporateBenefits.map((b) => (
+              <li key={b}><Check size={18} strokeWidth={2.5} /> <span>{b}</span></li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Expertise() {
+  return (
+    <section id="uzmanlik" className="section expertise">
+      <div className="container">
+        <SectionHeading
+          eyebrow="Uzmanlık Alanları"
+          title="Gayrimenkul ve aile hukukunda derin deneyim."
+          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan iki alan; hem şirketler hem bireyler için."
+        />
+
+        <div className="featured">
+          {featuredAreas.map((area, i) => {
+            const Icon = icons[area.icon];
+            return (
+              <motion.article
+                id={area.id}
+                className={`featured-card ${i % 2 ? 'alt' : ''}`}
+                key={area.id}
+                {...inView}
+                variants={fadeUp}
+              >
+                <div className="featured-head">
+                  <div className="featured-icon"><Icon size={30} strokeWidth={1.5} /></div>
+                  <span className="eyebrow">{area.kicker}</span>
+                  <h3>{area.title}</h3>
+                  <p>{area.text}</p>
+                  <a href="#iletisim" className="text-link">Görüşme talep edin <ArrowRight size={16} /></a>
+                </div>
+                <ul className="featured-list">
+                  {area.items.map((item) => (
+                    <li key={item}><span className="dot" />{item}</li>
+                  ))}
+                </ul>
+              </motion.article>
+            );
+          })}
+        </div>
+
+        <motion.div className="other-areas" {...inView} variants={stagger}>
+          {otherAreas.map((a) => {
+            const Icon = icons[a.icon];
+            return (
+              <motion.div className="other-card" key={a.title} variants={fadeUp}>
+                <Icon size={24} strokeWidth={1.5} />
+                <div>
+                  <h4>{a.title}</h4>
+                  <p>{a.text}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Process() {
+  return (
+    <section className="section process">
+      <div className="container">
+        <SectionHeading
+          light
+          eyebrow="Çalışma Şekli"
+          title="Açık, planlı ve şeffaf bir süreç."
+        />
+        <motion.ol className="process-steps" {...inView} variants={stagger}>
+          {process.map((p, i) => (
+            <motion.li key={p.title} variants={fadeUp}>
+              <span className="step-no">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </motion.li>
+          ))}
+        </motion.ol>
+      </div>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section id="hakkinda" className="section about">
+      <div className="container about-grid">
+        <motion.div className="about-text" {...inView} variants={fadeUp}>
+          <span className="eyebrow">Hakkında</span>
+          <h2>Av. Barkın Alaçam</h2>
+          <p className="lead">
+            Marmara Üniversitesi Hukuk Fakültesi mezunu olan Av. Barkın Alaçam, 2000 yılından bu
+            yana kesintisiz olarak avukatlık yapmaktadır.
+          </p>
+          <p>
+            Meslek hayatına KATILIM Hukuk Bürosu’nda başlamış, ardından 16 yılı aşkın süre
+            ÖZGÜL Hukuk Bürosu’nda ticari, gayrimenkul ve aile hukuku alanlarında çok sayıda
+            dosya yürütmüştür. 2020 yılında Alaçam Avukatlık ve Arabuluculuk Bürosu’nu
+            kurmuştur.
+          </p>
+          <p>
+            Adalet Bakanlığı siciline kayıtlı arabulucu olması, uyuşmazlıklara yalnızca dava
+            perspektifinden değil, uzlaşma imkânları açısından da bakabilmesini sağlar. Bu
+            yaklaşım, özellikle zaman ve maliyetin kritik olduğu ticari ilişkilerde müvekkillere
+            önemli avantaj sunar.
+          </p>
+          <blockquote>
+            “İyi hukuki danışmanlık, sorunu çözmekten önce sorunun doğmasını engellemekle başlar.”
+          </blockquote>
+        </motion.div>
+
+        <motion.ol className="timeline" {...inView} variants={stagger}>
+          {timeline.map((t) => (
+            <motion.li key={t.year} variants={fadeUp}>
+              <span className="t-year">{t.year}</span>
+              <p>{t.text}</p>
+            </motion.li>
+          ))}
+        </motion.ol>
+      </div>
+    </section>
+  );
+}
+
+function Faq() {
+  const [openIndex, setOpenIndex] = useState(0);
+  return (
+    <section id="sss" className="section faq">
+      <div className="container faq-grid">
+        <SectionHeading
+          align="left"
+          eyebrow="Sıkça Sorulan Sorular"
+          title="Merak edilenler"
+          text="Aşağıdaki bilgiler genel niteliktedir; somut durumunuz için hukuki görüş yerine geçmez."
+        />
+        <div className="faq-list">
+          {faqs.map((f, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div className={`faq-item ${isOpen ? 'open' : ''}`} key={f.q}>
+                <button
+                  className="faq-q"
+                  onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-${i}`}
+                >
+                  <span>{f.q}</span>
+                  <ChevronDown size={20} />
+                </button>
+                <div className="faq-a" id={`faq-${i}`} role="region" hidden={!isOpen}>
+                  <p>{f.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactForm() {
+  const [form, setForm] = useState({ type: 'Kurumsal', name: '', company: '', phone: '', topic: '', message: '', consent: false });
+  const update = (k) => (e) => setForm({ ...form, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
+
+  const submit = (e) => {
+    e.preventDefault();
+    const subject = `Görüşme Talebi – ${form.type}${form.topic ? ` – ${form.topic}` : ''}`;
+    const body = [
+      `Müvekkil türü: ${form.type}`,
+      `Ad Soyad: ${form.name}`,
+      form.type === 'Kurumsal' && form.company ? `Şirket: ${form.company}` : null,
+      `Telefon: ${form.phone}`,
+      form.topic ? `Konu: ${form.topic}` : null,
+      '',
+      form.message,
+    ].filter((l) => l !== null).join('\n');
+    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  return (
+    <form className="contact-form" onSubmit={submit}>
+      <h3>Görüşme Talebi</h3>
+      <div className="segmented" role="radiogroup" aria-label="Müvekkil türü">
+        {['Kurumsal', 'Bireysel'].map((t) => (
+          <button
+            type="button"
+            key={t}
+            role="radio"
+            aria-checked={form.type === t}
+            className={form.type === t ? 'active' : ''}
+            onClick={() => setForm({ ...form, type: t })}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      <div className="form-row">
+        <label>
+          <span>Ad Soyad *</span>
+          <input required value={form.name} onChange={update('name')} autoComplete="name" />
+        </label>
+        {form.type === 'Kurumsal' && (
+          <label>
+            <span>Şirket</span>
+            <input value={form.company} onChange={update('company')} autoComplete="organization" />
+          </label>
+        )}
+      </div>
+      <div className="form-row">
+        <label>
+          <span>Telefon *</span>
+          <input required type="tel" value={form.phone} onChange={update('phone')} autoComplete="tel" />
+        </label>
+        <label>
+          <span>Konu</span>
+          <select value={form.topic} onChange={update('topic')}>
+            <option value="">Seçiniz</option>
+            <option>Kurumsal Danışmanlık</option>
+            <option>Sözleşmeler</option>
+            <option>Gayrimenkul</option>
+            <option>Boşanma / Aile</option>
+            <option>Arabuluculuk</option>
+            <option>Ceza</option>
+            <option>Diğer</option>
+          </select>
+        </label>
+      </div>
+      <label>
+        <span>Mesajınız *</span>
+        <textarea required rows="4" value={form.message} onChange={update('message')} placeholder="Konuyu kısaca özetleyebilirsiniz." />
+      </label>
+      <label className="consent">
+        <input type="checkbox" required checked={form.consent} onChange={update('consent')} />
+        <span>
+          Paylaştığım kişisel verilerin, 6698 sayılı KVKK kapsamında yalnızca talebime dönüş
+          yapılması amacıyla işlenmesini kabul ediyorum.
+        </span>
+      </label>
+      <button type="submit" className="btn btn-gold btn-block">
+        Gönder <Send size={17} />
+      </button>
+      <p className="form-note">Gönder’e bastığınızda e-posta uygulamanız mesajınız hazır şekilde açılır.</p>
+    </form>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="iletisim" className="section contact">
+      <div className="container">
+        <SectionHeading
+          light
+          eyebrow="İletişim"
+          title="Bir ön görüşme planlayalım."
+          text="Kurumsal danışmanlık, gayrimenkul, boşanma ve arabuluculuk talepleriniz için büromuza ulaşabilirsiniz."
+        />
+
+        <div className="contact-grid">
+          <motion.div className="contact-info" {...inView} variants={stagger}>
+            <motion.div className="info-item" variants={fadeUp}>
+              <MapPin size={22} />
+              <div>
+                <h4>Adres</h4>
+                <p>{contact.addressLines.map((l) => <span key={l}>{l}<br /></span>)}</p>
+                <a href={contact.mapLink} target="_blank" rel="noopener noreferrer" className="text-link">Yol tarifi al <ArrowRight size={15} /></a>
+              </div>
+            </motion.div>
+            <motion.div className="info-item" variants={fadeUp}>
+              <Phone size={22} />
+              <div>
+                <h4>Telefon</h4>
+                <p>
+                  Ofis: <a href={contact.phoneOfficeHref}>{contact.phoneOffice}</a><br />
+                  Mobil: <a href={contact.phoneMobileHref}>{contact.phoneMobile}</a>
+                </p>
+                <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-link">WhatsApp ile yazın <ArrowRight size={15} /></a>
+              </div>
+            </motion.div>
+            <motion.div className="info-item" variants={fadeUp}>
+              <Mail size={22} />
+              <div>
+                <h4>E-posta</h4>
+                <p><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+              </div>
+            </motion.div>
+            <motion.div className="info-item" variants={fadeUp}>
+              <Clock size={22} />
+              <div>
+                <h4>Çalışma Saatleri</h4>
+                <p>{contact.hours}</p>
+              </div>
+            </motion.div>
+            <motion.div className="map" variants={fadeUp}>
+              <iframe
+                title="Büro konumu"
+                src={contact.mapEmbed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </motion.div>
+          </motion.div>
+
+          <motion.div {...inView} variants={fadeUp}>
+            <ContactForm />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const year = new Date().getFullYear();
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-top">
+          <div className="footer-brand">
+            <span className="brand-mark">A</span>
+            <div>
+              <strong>Alaçam Avukatlık ve Arabuluculuk Bürosu</strong>
+              <span>Kartal / İstanbul</span>
+            </div>
+          </div>
+          <nav className="footer-nav" aria-label="Alt menü">
+            {nav.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
+          </nav>
+        </div>
+        <p className="disclaimer">
+          Bu internet sitesi, Türkiye Barolar Birliği Meslek Kuralları ve Reklam Yasağı
+          Yönetmeliği’ne uygun olarak yalnızca bilgilendirme amacıyla hazırlanmıştır. Sitede
+          yer alan bilgiler hukuki görüş niteliğinde değildir; somut durumunuz için bir avukata
+          danışmanız önerilir.
+        </p>
+        <div className="footer-bottom">
+          <span>© {year} Alaçam Avukatlık ve Arabuluculuk Bürosu. Tüm hakları saklıdır.</span>
+          <span>Web tasarım: C. Balkı GEMİRTER</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default function App() {
+  return (
+    <MotionConfig reducedMotion="user">
+      <a href="#kurumsal" className="skip-link">İçeriğe geç</a>
+      <Navbar />
+      <main>
+        <Hero />
+        <Corporate />
+        <Expertise />
+        <Process />
+        <About />
+        <Faq />
+        <Contact />
+      </main>
+      <Footer />
+      <a
+        href={contact.whatsapp}
+        className="whatsapp-fab"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp ile iletişime geçin"
+      >
+        <MessageCircle size={26} />
+      </a>
+    </MotionConfig>
+  );
+}
