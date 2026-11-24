@@ -28,7 +28,6 @@ export const nav = [
   { href: '#kurumsal', label: 'Kurumsal Danışmanlık' },
   { href: '#uzmanlik', label: 'Uzmanlık Alanları' },
   { href: '#hakkinda', label: 'Hakkında' },
-  { href: '#sss', label: 'S.S.S.' },
   { href: '#iletisim', label: 'İletişim' },
 ];
 
@@ -105,6 +104,23 @@ export const featuredAreas = [
       'Aile içi arabuluculuk ve uzlaşma',
     ],
   },
+  {
+    id: 'fikri-mulkiyet',
+    icon: 'Lightbulb',
+    kicker: 'Öne Çıkan Alan',
+    title: 'Fikri ve Sınai Mülkiyet Hukuku',
+    text: 'Marka, tasarım, patent ve telif hakları, bir işletmenin en değerli varlıkları arasındadır. Bu hakların ihlaline karşı açılan ve bu haklara yöneltilen davalar, tedbir ve delil tespiti aşamasından karara kadar takip edilir.',
+    items: [
+      'Marka hakkına tecavüz davaları',
+      'Marka hükümsüzlüğü ve iptal davaları',
+      'YİDK kararlarının iptali davaları',
+      'Haksız rekabet davaları',
+      'Tasarım ve patent uyuşmazlıkları',
+      'Telif hakkı ihlallerine ilişkin davalar',
+      'İhtiyati tedbir ve delil tespiti',
+      'Lisans ve devir sözleşmeleri',
+    ],
+  },
 ];
 
 export const otherAreas = [
@@ -144,27 +160,4 @@ export const timeline = [
   { year: '16+ yıl', text: 'ÖZGÜL Hukuk Bürosu’nda 16 yılı aşkın süre boyunca ticaret, organize sanayi bölgeleri, şirketlere hukuki danışmanlık, gayrimenkul ve aile hukukuna ilişkin davalarda çalışmıştır.' },
   { year: '2020', text: 'Alaçam Avukatlık ve Arabuluculuk Bürosu’nun kuruluşu.' },
   { year: 'Bugün', text: 'Şirketlere sürekli danışmanlık, gayrimenkul ve aile hukuku davaları, arabuluculuk.' },
-];
-
-export const faqs = [
-  {
-    q: 'Kurumsal danışmanlık ücreti nasıl belirlenir?',
-    a: 'Ücret; şirketin ölçeği, beklenen iş yükü ve hizmet kapsamına göre, Avukatlık Asgari Ücret Tarifesi’nin altında olmamak üzere yazılı sözleşmeyle belirlenir. Aylık sabit danışmanlık modeli, maliyetlerin öngörülebilir olmasını sağlar; davalar ayrıca ya da paket kapsamında değerlendirilebilir.',
-  },
-  {
-    q: 'Ticari uyuşmazlıklarda dava açmadan önce arabulucuya gitmek zorunlu mu?',
-    a: 'Evet. Konusu bir miktar paranın ödenmesi olan alacak ve tazminat taleplerine ilişkin ticari davalarda arabuluculuğa başvurmak dava şartıdır. 1 Eylül 2023 itibarıyla kira uyuşmazlıkları, ortaklığın giderilmesi ve kat mülkiyeti uyuşmazlıklarının önemli bir kısmı da dava şartı arabuluculuk kapsamına alınmıştır.',
-  },
-  {
-    q: 'Anlaşmalı boşanma için hangi şartlar gerekir?',
-    a: 'Evliliğin en az bir yıl sürmüş olması, eşlerin birlikte başvurması ya da birinin davasını diğerinin kabul etmesi ve hâkimin tarafları bizzat dinlemesi gerekir. Velayet, nafaka ve mal paylaşımı gibi konuların düzenlendiği protokolün hâkim tarafından uygun bulunması da şarttır.',
-  },
-  {
-    q: 'Taşınmaz satın almadan önce neden hukuki inceleme yaptırmalıyım?',
-    a: 'Tapu kaydındaki şerhler, ipotek ve hacizler, imar durumu, yapı kullanma izni ve kat mülkiyetine geçiş gibi hususlar satın alma sonrasında ciddi kayıplara yol açabilir. Önceden yapılan inceleme bu riskleri sözleşme aşamasında görünür kılar.',
-  },
-  {
-    q: 'İlk görüşmeye gelirken neler getirmeliyim?',
-    a: 'Konuyla ilgili sözleşmeler, tapu ve resmi yazışmalar, varsa tebliğ edilen dava veya icra evrakı ile olayların kısa bir kronolojisi görüşmeyi verimli kılar. Şirketler için ticaret sicil gazetesi ve imza sirküleri de faydalıdır.',
-  },
 ];

@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import {
   Menu, X, Scale, Shield, Landmark, MapPin, Phone, Mail, Clock, Briefcase,
-  FileSignature, Building2, Gavel, Handshake, Home, Users, Check, ArrowRight,
-  ChevronDown, MessageCircle, Send,
+  FileSignature, Building2, Gavel, Handshake, Home, Users, Lightbulb, Check, ArrowRight,
+  MessageCircle, Send,
 } from 'lucide-react';
 import { motion, MotionConfig } from 'framer-motion';
 import {
   contact, nav, corporateServices, corporateBenefits, featuredAreas,
-  otherAreas, process, timeline, faqs, getEmail,
+  otherAreas, process, timeline, getEmail,
 } from './content';
 import './App.css';
 
 const icons = {
-  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users,
+  Scale, Shield, Landmark, Briefcase, FileSignature, Building2, Gavel, Handshake, Home, Users, Lightbulb,
 };
 
 const fadeUp = {
@@ -101,7 +101,7 @@ function Hero() {
           </motion.h1>
           <motion.p variants={fadeUp}>
             Kurumsal müvekkillere sözleşmelerden ticari uyuşmazlıklara kadar önleyici ve
-            çözüm odaklı destek; gayrimenkul ve aile hukukunda ise titiz dava takibi.
+            çözüm odaklı destek; gayrimenkul, aile ve fikri mülkiyet hukukunda ise titiz dava takibi.
           </motion.p>
           <motion.div className="hero-actions" variants={fadeUp}>
             <a href="#iletisim" className="btn btn-gold">
@@ -201,8 +201,8 @@ function Expertise() {
       <div className="container">
         <SectionHeading
           eyebrow="Uzmanlık Alanları"
-          title="Gayrimenkul ve aile hukukunda derin deneyim."
-          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan iki alan; hem şirketler hem bireyler için."
+          title="Derinlemesine deneyim gerektiren alanlar."
+          text="Yirmi beş yılı aşan meslek hayatında en çok yoğunlaşılan alanlar; hem şirketler hem bireyler için."
         />
 
         <div className="featured">
@@ -316,43 +316,6 @@ function About() {
   );
 }
 
-function Faq() {
-  const [openIndex, setOpenIndex] = useState(0);
-  return (
-    <section id="sss" className="section faq">
-      <div className="container faq-grid">
-        <SectionHeading
-          align="left"
-          eyebrow="Sıkça Sorulan Sorular"
-          title="Merak edilenler"
-          text="Aşağıdaki bilgiler genel niteliktedir; somut durumunuz için hukuki görüş yerine geçmez."
-        />
-        <div className="faq-list">
-          {faqs.map((f, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div className={`faq-item ${isOpen ? 'open' : ''}`} key={f.q}>
-                <button
-                  className="faq-q"
-                  onClick={() => setOpenIndex(isOpen ? -1 : i)}
-                  aria-expanded={isOpen}
-                  aria-controls={`faq-${i}`}
-                >
-                  <span>{f.q}</span>
-                  <ChevronDown size={20} />
-                </button>
-                <div className="faq-a" id={`faq-${i}`} role="region" hidden={!isOpen}>
-                  <p>{f.a}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ContactForm() {
   const [form, setForm] = useState({ type: 'Kurumsal', name: '', company: '', phone: '', topic: '', message: '', consent: false });
   const update = (k) => (e) => setForm({ ...form, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value });
@@ -414,6 +377,7 @@ function ContactForm() {
             <option>Kurumsal Danışmanlık</option>
             <option>Sözleşmeler</option>
             <option>Gayrimenkul</option>
+            <option>Fikri Mülkiyet / Marka</option>
             <option>Boşanma / Aile</option>
             <option>Arabuluculuk</option>
             <option>Ceza</option>
@@ -554,7 +518,6 @@ export default function App() {
         <Expertise />
         <Process />
         <About />
-        <Faq />
         <Contact />
       </main>
       <Footer />
